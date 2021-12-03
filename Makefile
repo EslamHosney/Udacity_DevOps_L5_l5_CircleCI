@@ -5,8 +5,8 @@ env:
 	#Show information about environment
 	which python3
 	python3 --version
-	which pytest
-	which pylint
+#	which pytest
+#	which pylint
 	
 install:
 	pip install --upgrade pip &&\
@@ -15,5 +15,12 @@ install:
 lint:
 	/bin/hadolint Dockerfile
 	pylint --disable=R,C,W1203 *.py
+	
+test:
+	# write test
 
-all: install lint test
+run:
+	python web.py
+	
+
+all: install run
